@@ -1,4 +1,4 @@
-<!-- репозиторий GitHub -->
+<!-- репозиторий в GitHub -->
 
 https://github.com/LAVOLPEEEE/zakrivayuschiy-teg-f
 
