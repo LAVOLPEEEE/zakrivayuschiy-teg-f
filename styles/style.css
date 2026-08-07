@@ -11,6 +11,358 @@
 */
 
 .page {
+  font-family: var(--font-main), sans-serif;
+  font-variation-settings: "wght" var(--weight-card-text);
   min-inline-size: 320px;
   min-block-size: 100dvb;
+  margin: 0;
+  padding: 0;
+  background-image: var(--grid-gradient);
+  background-attachment: fixed;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+/* шапка */
+.header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 100px;
+  margin-bottom: 98px;
+  padding-block: clamp(122px, 10vw, 128px);
+  background-color: var(--white);
+  border: 2px solid var(--black);
+}
+
+.content-size {
+  width: var(--content-width);
+  margin-inline: auto;
+}
+
+.header__logo {
+  font-family: var(--font-accent);
+  font-size: clamp(49px, 6vw, 65px);
+  color: var(--black);
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.header__title {
+  margin-top: 20px;
+  font-family: var(--font-accent);
+  font-size: clamp(14px, 2vw, 23px);
+  text-transform: uppercase;
+}
+
+/* главная */
+.card {
+  width: var(--content-width);
+  margin: 0 auto 50px;
+  background: var(--white);
+  border: 2px solid var(--black);
+  overflow: hidden;
+}
+
+.card__title {
+  padding: 4px 10px;
+  font-size: 18px;
+  font-variation-settings: "wght" var(--weight-card-heading);
+  border-bottom: 2px solid var(--black);
+}
+
+.card__image-container {
+  position: relative;
+}
+
+.card__image {
+  display: block;
+  width: 100%;
+}
+
+.card__label {
+  position: absolute;
+  top: 25px;
+  right: 25px;
+  font-family: var(--font-accent);
+  font-size: 14px;
+  opacity: 0.5;
+  mix-blend-mode: hard-light;
+  color: var(--black);
+  -webkit-text-stroke: 1px var(--white);
+}
+
+@supports not (-webkit-text-stroke: 1px white) {
+  .card__label {
+    color: var(--black);
+    text-shadow:
+      -1px 0 var(--white),
+      1px 0 var(--white),
+      0 -1px var(--white),
+      0 1px var(--white);
+  }
+}
+
+.card__content {
+  padding: 23px 25px 25px 25px;
+}
+
+.card__text {
+  margin-bottom: 25px;
+  line-height: 21px;
+  font-variation-settings: "wght" var(--weight-card-text);
+  font-size: 18px;
+}
+
+/* Общий стиль всех кнопок */
+.button {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  background: var(--white);
+  border: 2px solid var(--black);
+  cursor: pointer;
+  font-family: var(--font-accent);
+  font-size: 14px;
+}
+
+.button:focus {
+  outline: none;
+  box-shadow: 2px 2px 0 var(--black);
+  transition: box-shadow 0.3s ease;
+}
+
+.button::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--black);
+  transform-origin: left center;
+  transform: scaleX(0);
+  transition: transform 0.5s ease-in-out;
+}
+
+.button:hover::after {
+  transform: scaleX(1);
+}
+
+.button__text {
+  position: relative;
+  z-index: 1;
+  color: var(--white);
+  mix-blend-mode: difference;
+}
+
+.button svg {
+  position: relative;
+  z-index: 1;
+}
+
+.card__buttons {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 6px;
+}
+
+.button__text {
+  display: inline-block;
+}
+
+.card__icon-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 39px;
+  height: 38px;
+  padding: 0;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: border-color 0.3s ease;
+}
+
+.card__like-button {
+  width: 130px;
+  height: 38px;
+}
+
+.card__icon-button:focus {
+  outline: none;
+}
+
+.card__icon-button:focus-visible {
+  border: 2px solid var(--black);
+}
+
+.save-button {
+  width: 335px;
+  height: 55px;
+  padding: 15px 18px;
+  gap: 8px;
+  margin: 0 auto 100px;
+}
+
+/* диалоговое окно */
+.dialog {
+  display: none;
+  flex-direction: column;
+  gap: 30px;
+  max-width: 353px;
+  padding: 30px;
+  border: 2px solid var(--black);
+  background: var(--white);
+}
+
+.dialog[open] {
+  display: flex;
+}
+
+.dialog::backdrop {
+  background: var(--black);
+  opacity: 0.75;
+}
+
+.dialog__row {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.dialog__icon {
+  flex-shrink: 0;
+}
+
+.dialog__text {
+  font-family: var(--font-accent);
+  font-size: 14px;
+  line-height: 21px;
+  text-transform: uppercase;
+}
+
+.dialog__button {
+  width: 100%;
+  height: 38px;
+  padding: 0;
+}
+
+/* фильтры для фото */
+.grayscale-filter {
+  filter: grayscale(75%);
+}
+
+.saturate-filter {
+  filter: saturate(300%);
+}
+
+.hue-filter {
+  filter: hue-rotate(25deg);
+}
+
+.invert-filter {
+  filter: invert(80%);
+}
+
+.sepia-filter {
+  filter: sepia(90%);
+}
+
+.blur-filter {
+  filter: blur(1px);
+}
+
+.mix-filter {
+  filter: blur(1px) hue-rotate(-228deg);
+}
+
+/* Лайк */
+.like-icon {
+  transform-origin: center;
+}
+
+.like-icon:hover .core {
+  fill: var(--contour-color);
+  transition: fill 0.3s linear;
+}
+
+.like-icon:hover .main-body {
+  fill: var(--contour-color);
+  transition: fill 0.3s linear 0.05s;
+}
+
+.like-icon:active .core {
+  fill: var(--animation-fill-color);
+  transition: fill 0.3s linear;
+}
+
+.like-icon:active .main-body {
+  fill: var(--animation-fill-color);
+  transition: fill 0.3s linear 0.05s;
+}
+
+.like-icon.is-liked .core {
+  fill: var(--animation-fill-color);
+  transition: fill 0.3s linear;
+}
+
+.like-icon.is-liked .main-body {
+  fill: var(--animation-fill-color);
+  transition: fill 0.3s linear 0.05s;
+}
+
+.like-icon.is-liked .contour {
+  fill: var(--animation-fill-color);
+  transition: fill 0.3s linear 0.06s;
+}
+
+.like-icon.is-liked .heart {
+  transform-origin: center;
+  animation: heart-scale 0.3s ease-in 0.1s 1;
+}
+
+.like-icon.is-liked .sparks {
+  animation: sparks 0.3s ease-in 0.3s 1;
+}
+
+.contour {
+  transition: fill 0.1s linear;
+}
+
+.core {
+  fill: transparent;
+  transition: fill 0.3s linear 0.03s;
+}
+
+.main-body {
+  fill: transparent;
+  transition: fill 0.3s linear;
+}
+
+.sparks {
+  opacity: 0;
+}
+
+/* адаптив */
+@media (width <= 375px) {
+  .save-button {
+    width: 100%;
+    max-width: 306px;
+    min-height: 84px;
+    padding: 17px 20px;
+    gap: 8px;
+    margin: 0 auto 100px;
+    box-sizing: border-box;
+    flex-direction: column;
+  }
+
+  .dialog {
+    max-width: 300px;
+    padding: 30px 20px;
+  }
 }
