@@ -91,6 +91,7 @@
   mix-blend-mode: hard-light;
   color: var(--black);
   -webkit-text-stroke: 1px var(--white);
+  z-index: 2;
 }
 
 @supports not (-webkit-text-stroke: 1px white) {
@@ -157,6 +158,7 @@
   z-index: 1;
   color: var(--white);
   mix-blend-mode: difference;
+  display: inline-block;
 }
 
 .button svg {
@@ -169,10 +171,6 @@
   justify-content: flex-end;
   align-items: center;
   gap: 6px;
-}
-
-.button__text {
-  display: inline-block;
 }
 
 .card__icon-button {
