@@ -30,8 +30,8 @@
   align-items: center;
   justify-content: center;
   margin-top: 100px;
-  margin-bottom: 98px;
-  padding-block: clamp(122px, 10vw, 128px);
+  margin-bottom: 100px;
+  padding-block: clamp(120px, 10vw, 128px);
   background-color: var(--white);
   border: 2px solid var(--black);
 }
@@ -96,7 +96,6 @@
 
 @supports not (-webkit-text-stroke: 1px white) {
   .card__label {
-    color: var(--black);
     text-shadow:
       -1px 0 var(--white),
       1px 0 var(--white),
@@ -106,7 +105,7 @@
 }
 
 .card__content {
-  padding: 23px 25px 25px 25px;
+  padding: 25px;
 }
 
 .card__text {
@@ -184,6 +183,7 @@
   border: none;
   cursor: pointer;
   transition: border-color 0.3s ease;
+  border: 2px solid transparent;
 }
 
 .card__like-button {
@@ -205,6 +205,11 @@
   padding: 15px 18px;
   gap: 8px;
   margin: 0 auto 100px;
+}
+
+.save-button .dialog__icon {
+  color: var(--white);
+  mix-blend-mode: difference;
 }
 
 /* диалоговое окно */
@@ -352,15 +357,19 @@
     width: 100%;
     max-width: 306px;
     min-height: 84px;
-    padding: 17px 20px;
+    padding: 17px 18px;
     gap: 8px;
     margin: 0 auto 100px;
     box-sizing: border-box;
     flex-direction: column;
   }
+  .dialog__icon {
+    width: 28px;
+    height: 28px;
+  }
 
   .dialog {
-    max-width: 300px;
+    max-width: 341px;
     padding: 30px 20px;
   }
 }

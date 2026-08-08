@@ -2,7 +2,7 @@
 :root {
   /* Названия шрифтов */
   --font-main: "Inter", sans-serif;
-  --font-accent: "PressStart2P", monospace;
+  --font-accent: "PressStart2P", fantasy;
 
   /* Веса для вариативного Inter */
   --weight-card-text: 410;
